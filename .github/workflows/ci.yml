@@ -1,27 +1,31 @@
-name: Tic_tac_toe
+name: CI
 
 on:
   push:
     branches:
       - main
-      - master
   pull_request:
     branches:
       - main
-      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Install dependencies
-        run: sudo apt update && sudo apt install -y libsfml-dev
+      - name: Install SFML
+        run: |
+          sudo apt-get update
+          sudo apt-get install libsfml-dev
 
-      - name: Compile project
-       run: g++ -o Tic_tac_toe src/main.cpp src/player.h src/gamelogic.h src/bouton.h -I. -lsfml-graphics -lsfml-window -lsfml-system
-      - name: Run the game (optional, for testing)
-        run: ./Tic_tac_toe || echo "Execution skipped in CI environment"
+      - name: Compile
+        run: |
+          mkdir -p build
+          g++ -o build/Tic_tac_toe main.cpp player.h game_logic.h bouton.h -I. -lsfml-graphics -lsfml-window -lsfml-system
+
+      - name: Run program
+        run: |
+          ./build/Tic_tac_toe
