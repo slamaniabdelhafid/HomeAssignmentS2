@@ -22,7 +22,6 @@ jobs:
         run: sudo apt update && sudo apt install -y libsfml-dev
 
       - name: Compile project
-        run: g++ -o Tic_tac_toe main.cpp -I. -lsfml-graphics -lsfml-window -lsfml-system
-
+       run: g++ -o Tic_tac_toe src/main.cpp src/player.h src/gamelogic.h src/bouton.h -I. -lsfml-graphics -lsfml-window -lsfml-system
       - name: Run the game (optional, for testing)
         run: ./Tic_tac_toe || echo "Execution skipped in CI environment"
