@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Ensures all files are fetched
+
+      - name: Install SFML
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libsfml-dev
+      - name: Verify main.cpp exists
+        run: |
+          if [ ! -f main.cpp; then 
+            echo "Error: src/main.cpp not found!"
+            exit 1
+          fi
+      - name: Compile
+        run: |
+          mkdir -p build
+          g++ -Wall -o build/TicTacToe /main.cpp -I. -lsfml-graphics -lsfml-window -lsfml-system
+      - name: Run program
+        run: |
+          ./build/TicTacToe
