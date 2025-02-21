@@ -31,7 +31,7 @@ jobs:
       - name: Compile
         run: |
           mkdir -p build
-          g++ -Wall -o build/TicTacToe /main.cpp -I. -lsfml-graphics -lsfml-window -lsfml-system
+          g++ -Wall -o build/TicTacToe main.cpp -I. -lsfml-graphics -lsfml-window -lsfml-system
       - name: Run program
         run: |
           ./build/TicTacToe
