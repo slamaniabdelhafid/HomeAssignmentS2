@@ -1,0 +1,49 @@
+name: CI Pipeline
+
+# Déclencheurs du workflow
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    env:
+      CI: true # Indique que nous sommes dans un environnement CI
+
+    steps:
+      # Étape 1 : Vérifier le code depuis le dépôt GitHub
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Étape 2 : Installer les dépendances nécessaires (SFML et Google Test)
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y libsfml-dev
+          sudo apt install -y libgtest-dev
+
+      # Étape 3 : Compiler Google Test
+      - name: Build Google Test
+        run: |
+          cd /usr/src/gtest
+          sudo mkdir build
+          cd build
+          sudo cmake ..
+          sudo make
+          sudo cp lib/*.a /usr/lib/
+
+      # Étape 4 : Compiler le projet avec Makefile
+      - name: Compile project
+        run: |
+          make test
+
+      # Étape 5 : Exécuter les tests unitaires
+      - name: Run tests
+        run: |
+          ./tmp/test_all
