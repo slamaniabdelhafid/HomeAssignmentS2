@@ -50,7 +50,7 @@ run:
 
 # Compiler et exécuter les tests
 test: $(TEST_SRCS)
-	$(CXX) $(CXXFLAGS) $(INCLUDES) $(SFML_INCLUDE) $(TEST_SRCS) $(GTEST_FLAGS) $(SFML_FLAGS) $(SFML_LIB) -o /tmp/test_all && /tmp/test_all
+	$(CXX) $(CXXFLAGS) $(INCLUDES) $(SFML_INCLUDE) $(TEST_SRCS) $(GTEST_FLAGS) $(SFML_FLAGS) $(SFML_LIB) -o ./test_all && ./test_all
 
 # Nettoyer les fichiers temporaires
 clean:
