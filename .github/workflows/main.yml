@@ -13,20 +13,18 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
-    env:
-      CI: true # Indique que nous sommes dans un environnement CI
-
     steps:
       # Étape 1 : Vérifier le code depuis le dépôt GitHub
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Étape 2 : Installer les dépendances nécessaires (SFML et Google Test)
+      # Étape 2 : Installer les dépendances nécessaires (SFML, Google Test, Xvfb)
       - name: Install dependencies
         run: |
           sudo apt update
           sudo apt install -y libsfml-dev
           sudo apt install -y libgtest-dev
+          sudo apt install -y xvfb
 
       # Étape 3 : Compiler Google Test
       - name: Build Google Test
@@ -38,12 +36,18 @@ jobs:
           sudo make
           sudo cp lib/*.a /usr/lib/
 
-      # Étape 4 : Compiler le projet avec Makefile
+      # Étape 4 : Démarrer Xvfb (serveur X11 virtuel)
+      - name: Start Xvfb
+        run: |
+          Xvfb :99 -screen 0 1024x768x24 &
+          export DISPLAY=:99
+
+      # Étape 5 : Compiler le projet avec Makefile
       - name: Compile project
         run: |
           make test
 
-      # Étape 5 : Exécuter les tests unitaires
+      # Étape 6 : Exécuter les tests unitaires
       - name: Run tests
         run: |
           ./tmp/test_all
