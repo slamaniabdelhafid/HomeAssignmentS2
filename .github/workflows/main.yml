@@ -46,9 +46,9 @@ jobs:
       - name: Compile project
         run: |
           make test
-          ls -l /tmp/
+          ls -l .
 
       # Étape 6 : Exécuter les tests unitaires
       - name: Run tests
         run: |
-          ./tmp/test_all
+          ./test_all
