@@ -15,8 +15,11 @@ protected:
     GameController gameController{gameLogic, player1, player2, gameView};
 
     void SetUp() override {
-        ASSERT_TRUE(font.loadFromFile("/usr/share/fonts/truetype/freefont/FreeSans.ttf"))
+         const char* ci_env = std::getenv("CI");
+    if (!ci_env || std::string(ci_env) != "true") {
+        ASSERT_TRUE(font.loadFromFile("assets/fonts/FreeSans.ttf"))
             << "Erreur lors du chargement de la police.";
+    }
     }
 };
 

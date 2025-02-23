@@ -7,10 +7,12 @@ protected:
     sf::Font font;
 
     void SetUp() override {
-        ASSERT_TRUE(font.loadFromFile("/usr/share/fonts/truetype/freefont/FreeSans.ttf"))
+    const char* ci_env = std::getenv("CI");
+    if (!ci_env || std::string(ci_env) != "true") {
+        ASSERT_TRUE(font.loadFromFile("assets/fonts/FreeSans.ttf"))
             << "Erreur lors du chargement de la police.";
     }
-
+}
     Button createTestButton() {
         return Button(
             sf::Vector2f(200.f, 50.f),        
