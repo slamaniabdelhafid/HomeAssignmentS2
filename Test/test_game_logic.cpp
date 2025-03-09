@@ -9,7 +9,7 @@ TEST(GameLogicTest, InitialMatrixIsEmpty) {
         }
     }
 }
-
+//test
 TEST(GameLogicTest, SetCellWorks) {
     GameLogic logic;
     logic.getCell(0, 0) = 1;
