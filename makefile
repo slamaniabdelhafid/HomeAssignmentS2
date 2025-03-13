@@ -50,6 +50,7 @@ TEST_OBJS = $(TEST_SRCS:.cpp=.o)
 
 # Output Executable
 TARGET = TicTacToe
+TEST_TARGET = test_all
 
 # Default Rule: Build the Executable
 all: $(TARGET)
@@ -62,10 +63,11 @@ all: $(TARGET)
 $(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) $^ -o $(TARGET) $(SFML_LIBS)
 
-# Compiler et exécuter les tests
+# Compile and run tests
 test: $(TEST_OBJS)
-	$(CXX) $(CXXFLAGS) $(TEST_OBJS) $(GTEST_FLAGS) $(SFML_LIBS) -o /test_all && /test_all
+	$(CXX) $(CXXFLAGS) $(TEST_OBJS) $(GTEST_FLAGS) $(SFML_LIBS) -o $(TEST_TARGET)
+	./$(TEST_TARGET)
 
 # Nettoyer les fichiers temporaires
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f $(OBJS) $(TARGET) $(TEST_TARGET)
