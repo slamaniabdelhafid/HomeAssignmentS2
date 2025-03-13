@@ -64,7 +64,7 @@ $(TARGET): $(OBJS)
 
 # Compiler et exécuter les tests
 test: $(TEST_OBJS)
-	$(CXX) $(CXXFLAGS) $(TEST_OBJS) $(GTEST_FLAGS) $(SFML_LIBS) -o /tmp/test_all && /tmp/test_all
+	$(CXX) $(CXXFLAGS) $(TEST_OBJS) $(GTEST_FLAGS) $(SFML_LIBS) -o /test_all && /test_all
 
 # Nettoyer les fichiers temporaires
 clean:
