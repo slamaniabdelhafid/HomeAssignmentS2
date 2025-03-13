@@ -19,6 +19,7 @@ class Menu
         int pressed(){
             return selected;
         }
+		 int getSelected() const { return selected; }
         ~Menu();
     private :
         int selected;

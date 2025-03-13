@@ -32,3 +32,4 @@ void History::draw(sf::RenderWindow& window) {
 bool History::isBackPressed(sf::Vector2i mousePos) {
     return backButton.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos));
 }
+

@@ -10,9 +10,10 @@ SFML_LIBS = -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 # Directories
 SRC_DIR = .
 MENU_DIR = menu
+PUZZLE_DIR = puzzle
 
 # Source Files
-SRC = $(SRC_DIR)/main.cpp $(MENU_DIR)/menu.cpp $(MENU_DIR)/instruction.cpp $(MENU_DIR)/history.cpp
+SRC = $(SRC_DIR)/main.cpp $(MENU_DIR)/menu.cpp $(MENU_DIR)/instruction.cpp $(MENU_DIR)/history.cpp $(PUZZLE_DIR)/puzzle.cpp
 
 # Object Files
 OBJ = $(SRC:.cpp=.o)
