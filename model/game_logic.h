@@ -1,6 +1,13 @@
 #ifndef GAMELOGIC_H
 #define GAMELOGIC_H
 
+<<<<<<< HEAD
+=======
+#include <vector>    // Ajout pour std::vector
+#include <utility>   // Ajout pour std::pair
+#include <array>     // Ajout pour std::array
+
+>>>>>>> 128a514 (update)
 class GameLogic {
 private:
     int matrix[3][3]; 
@@ -18,6 +25,14 @@ public:
 
     // Méthode pour réinitialiser la matrice
     void resetMatrix();
+<<<<<<< HEAD
+=======
+	bool isBoardFull() const;
+    std::vector<std::pair<int, int>> getEmptyCells() const;
+    int evaluateBoard() const;
+    int minimax(int depth, bool isMaximizing);
+    std::pair<int, int> findBestMove();
+>>>>>>> 128a514 (update)
 };
 
 #endif 

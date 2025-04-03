@@ -64,4 +64,25 @@ void GameController::updateView() {
         }
     }
     gameView.updateBoard(board);
+<<<<<<< HEAD
+=======
+}
+void GameController::update() {
+    if (!gameState) return;  // Si le jeu est terminé, ne rien faire
+    
+    // Vérifier si c'est le tour de l'IA (player2)
+    if (!player1.isMyTurn() && !player2.isHumanPlayer()) {
+        player2.makeAIMove(gameLogic);
+        
+        // Vérifier victoire
+        if (gameLogic.checkLigne() || gameLogic.checkColonne() || gameLogic.checkDiagonale()) {
+            player2.incrementScore();
+            gameState = false;
+        }
+        // Vérifier match nul
+        else if (Player::getMoveCount() == 8) {
+            gameState = false;
+        }
+    }
+>>>>>>> 128a514 (update)
 }

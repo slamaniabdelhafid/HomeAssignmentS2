@@ -9,7 +9,11 @@ TEST(GameLogicTest, InitialMatrixIsEmpty) {
         }
     }
 }
+<<<<<<< HEAD
 
+=======
+//test
+>>>>>>> 128a514 (update)
 TEST(GameLogicTest, SetCellWorks) {
     GameLogic logic;
     logic.getCell(0, 0) = 1;
@@ -30,4 +34,8 @@ TEST(GameLogicTest, CheckDiagonaleDetectsWin) {
     logic.getCell(1, 1) = 1;
     logic.getCell(2, 2) = 1;
     EXPECT_TRUE(logic.checkDiagonale());
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 128a514 (update)

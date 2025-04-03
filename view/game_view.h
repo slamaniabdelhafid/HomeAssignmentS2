@@ -24,6 +24,11 @@ private:
     sf::Font& font; 
     std::vector<Button> buttons; 
 	Button newGameButton;
+<<<<<<< HEAD
+=======
+	sf::Texture texture;
+    sf::Sprite image;
+>>>>>>> 128a514 (update)
 };
 
 #endif 

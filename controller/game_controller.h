@@ -15,6 +15,10 @@ public:
 
    
     void updateView();
+<<<<<<< HEAD
+=======
+	void update();
+>>>>>>> 128a514 (update)
 
 private:
     GameLogic& gameLogic; 

@@ -1,26 +1,49 @@
 #include "game_view.h"
 #include <iostream>
 
+<<<<<<< HEAD
 float buttonSize = 70.f;
 float spacing = 15.f;
 float startX = (500 - (3*buttonSize + 2*spacing)) / 2;
 float startY = 135.f;
+=======
+float buttonSize = 90.f;
+float spacing = 15.f;
+float startX = (1300 - (3*buttonSize + 2*spacing)) / 2;
+float startY = 300.f;
+>>>>>>> 128a514 (update)
 sf::Color bleu(0x48D2FEFF);
 sf::Color jaune(0xE2BE00FF);
 Button& GameView::getNewGameButton() {
     return newGameButton;
 }
 // Constructeur
+<<<<<<< HEAD
 GameView::GameView(sf::Font& font) : font(font), 
 newGameButton(
           sf::Vector2f(300.f, 50.f),         
           sf::Vector2f(100.f, 420.f),        
+=======
+ 
+GameView::GameView(sf::Font& font) : font(font), 
+
+newGameButton(
+          sf::Vector2f(300.f, 50.f),         
+          sf::Vector2f(490, 220.f),        
+>>>>>>> 128a514 (update)
           sf::Color::White,                  
           []() {},                           
           "New Game",                        
           font                               
       ){
     //les boutons pour chaque case du plateau (3x3)
+<<<<<<< HEAD
+=======
+	if (!texture.loadFromFile("assets/images/last.png")) {
+        std::cerr << "Failed to load instruction image!\n";
+    }
+    image.setTexture(texture);
+>>>>>>> 128a514 (update)
     for (int row = 0; row < 3; ++row) {
         for (int col = 0; col < 3; ++col) {
            sf::Vector2f position(
@@ -45,6 +68,10 @@ newGameButton(
 }
 //l'interface graphique complète
 void GameView::draw(sf::RenderWindow& window) {
+<<<<<<< HEAD
+=======
+	  window.draw(image);
+>>>>>>> 128a514 (update)
     for (auto& button : buttons) {
         button.draw(window);
     }
@@ -76,4 +103,8 @@ int GameView::getClickedCell(const sf::Vector2i& mousePos) const {
         }
     }
     return -1; // Aucune case cliquée
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 128a514 (update)

@@ -1,16 +1,28 @@
 #ifndef PLAYER_H
 #define PLAYER_H
+<<<<<<< HEAD
 
+=======
+class GameLogic;
+>>>>>>> 128a514 (update)
 class Player {
 private:
     int score;          // Score du joueur
     int playerNumber;   // Numéro du joueur (1 ou 2)
     char symbol;        // Symbole actuel (X/O)
     static int moveCount; // Compteur de mouvements global
+<<<<<<< HEAD
 
 public:
     // Constructeur
     Player(int num);
+=======
+	 bool isHuman;
+
+public:
+    // Constructeur
+     Player(int num, bool human = true);
+>>>>>>> 128a514 (update)
 
     // Met à jour le symbole basé sur le compteur de mouvements
     void updateSymbol();
@@ -32,6 +44,11 @@ public:
 
     // Réinitialise le compteur de mouvements
     static void resetMoves();
+<<<<<<< HEAD
+=======
+	bool isHumanPlayer() const;
+    void makeAIMove(GameLogic& gameLogic);
+>>>>>>> 128a514 (update)
 };
 
 #endif 
