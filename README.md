@@ -42,9 +42,9 @@ make clean
 ./TicTacToe
 
 ## Controls
-# Mouse: Navigate menus and puzzles
+Mouse: Navigate menus and puzzles
 
-# Keyboard:
+Keyboard:
 
 Arrow keys for trap corridor
 
