@@ -1,0 +1,84 @@
+# Doxyfile 1.9.1 - SFML Game Documentation
+# Project configuration for Ancient Egypt Adventure Game
+
+#---------------------------------------------------------------------------
+# Project related configuration
+#---------------------------------------------------------------------------
+PROJECT_NAME           = "Ancient Egypt Adventure Game"
+PROJECT_NUMBER         = 1.0
+PROJECT_BRIEF          = "An immersive puzzle adventure through ancient Egypt"
+PROJECT_LOGO           = ./assets/images/key.png
+OUTPUT_DIRECTORY       = ./docs
+ALLOW_UNICODE_NAMES    = YES
+OUTPUT_LANGUAGE        = English
+BRIEF_MEMBER_DESC      = YES
+REPEAT_BRIEF           = YES
+
+#---------------------------------------------------------------------------
+# Input Configuration
+#---------------------------------------------------------------------------
+INPUT                  = ./include \
+                        ./src \
+                        ./Test
+FILE_PATTERNS          = *.hpp \
+                         *.cpp \
+                         *.h
+RECURSIVE              = YES
+
+# Exclude third-party libraries
+EXCLUDE_PATTERNS       = */SFML/* \
+                         */gtest/*
+
+#---------------------------------------------------------------------------
+# SFML-Specific Settings
+#---------------------------------------------------------------------------
+ENABLE_PREPROCESSING   = YES
+MACRO_EXPANSION        = YES
+PREDEFINED             = SFML_STATIC \
+                         SFML_GRAPHICS_LIB \
+                         SFML_WINDOW_LIB \
+                         SFML_SYSTEM_LIB \
+                         SFML_AUDIO_LIB
+
+#---------------------------------------------------------------------------
+# Build Configuration
+#---------------------------------------------------------------------------
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = NO
+EXTRACT_STATIC         = YES
+HIDE_UNDOC_MEMBERS     = NO
+SHOW_INCLUDE_FILES     = YES
+
+#---------------------------------------------------------------------------
+# Diagram Configuration (SFML visualization)
+#---------------------------------------------------------------------------
+HAVE_DOT               = YES
+CLASS_DIAGRAMS         = YES
+CLASS_GRAPH            = YES
+COLLABORATION_GRAPH    = YES
+UML_LOOK               = NO
+DOT_IMAGE_FORMAT       = png
+DOT_PATH               = /usr/bin/dot  # Update with your Graphviz path
+
+#---------------------------------------------------------------------------
+# HTML Output (Simplified for SFML focus)
+#---------------------------------------------------------------------------
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+HTML_DYNAMIC_SECTIONS  = YES
+SEARCHENGINE           = YES
+
+
+#---------------------------------------------------------------------------
+# Source Browser
+#---------------------------------------------------------------------------
+SOURCE_BROWSER         = YES
+REFERENCED_BY_RELATION = YES
+REFERENCES_RELATION    = YES
+
+#---------------------------------------------------------------------------
+# Test Documentation
+#---------------------------------------------------------------------------
+SHOW_GROUPED_MEMB_INC  = YES
+INLINE_GROUPED_CLASSES = YES
+INLINE_SIMPLE_STRUCTS  = YES
