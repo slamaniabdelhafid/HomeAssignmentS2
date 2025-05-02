@@ -1,14 +1,14 @@
-name: CI (Testing Branch)
+name: CI 
 
 on:
   push:
-    branches: [ "main" ]  
+    branches: [ "**" ]  
   pull_request:
-    branches: [ "main" , "realization" , "testing" ] 
+    branches: [ "**" ] 
 
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
       - name: Always Pass
-        run: echo "✅ CI check passed "
+        run: echo "✅ CI check passed"
