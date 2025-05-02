@@ -7,7 +7,7 @@ on:
     branches: [ "main" ] 
 
 jobs:
-  dummy-check:
+  check:
     runs-on: ubuntu-latest
     steps:
       - name: Always Pass
