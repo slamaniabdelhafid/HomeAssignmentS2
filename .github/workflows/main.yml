@@ -1,0 +1,14 @@
+name: CI (Testing Branch)
+
+on:
+  push:
+    branches: [ "testing" ]  
+  pull_request:
+    branches: [ "testing" ] 
+
+jobs:
+  dummy-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Always Pass
+        run: echo "✅ CI check passed "
