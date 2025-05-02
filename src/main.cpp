@@ -19,43 +19,35 @@
 #include "winpage.h"
 #include <iostream>
 
-
-
+// SFML GUI: Window creation
 int main() {
-    // Initialisation de la fenêtre
-    sf::RenderWindow window(sf::VideoMode(1280, 837), "Menu Navigation");
+    sf::RenderWindow window(sf::VideoMode(1280, 837), "Menu Navigation"); // SFML Window
 
-    // Initialisation du menu
+    // SFML GUI: Menu initialization
     Menu menu(1280, 837);
-	SoundBuffer finalBuffer;
-	Sound finalSound;
-	if(!finalBuffer.loadFromFile("assets/sounds/menu.wav")) {}
+    SoundBuffer finalBuffer; // SFML Audio
+    Sound finalSound; // SFML Audio
+    if(!finalBuffer.loadFromFile("assets/sounds/menu.wav")) {}
     finalSound.setBuffer(finalBuffer);
 
-    // Chargement des textures
+    // SFML GUI: Texture loading
     sf::Texture bgImage, bgImage2, keyImage;
-    if (!bgImage.loadFromFile("assets/images/menu.jpg")) {
-        // Gérer l'erreur si nécessaire
-    }
-    if (!bgImage2.loadFromFile("assets/images/mario.png")) {
-        // Gérer l'erreur si nécessaire
-    }
-    if (!keyImage.loadFromFile("assets/images/key.png")) {
-        // Gérer l'erreur si nécessaire
-    }
+    if (!bgImage.loadFromFile("assets/images/menu.jpg")) {} // SFML Texture
+    if (!bgImage2.loadFromFile("assets/images/mario.png")) {} // SFML Texture
+    if (!keyImage.loadFromFile("assets/images/key.png")) {} // SFML Texture
 
-    // Initialisation des sprites
-    sf::Sprite bg(bgImage);
-    sf::Sprite bg2(bgImage2);
-    sf::Sprite keyy(keyImage);
-    keyy.setPosition(1172, 431);
+    // SFML GUI: Sprite initialization
+    sf::Sprite bg(bgImage); // SFML Sprite
+    sf::Sprite bg2(bgImage2); // SFML Sprite
+    sf::Sprite keyy(keyImage); // SFML Sprite
+    keyy.setPosition(1172, 431); // SFML GUI
 
-    // Initialisation des pages
-    Instruction instructionPage;
-    Doors doorsPage;
-    Quiz quizPage;
-    History historyPage;
-    std::unique_ptr<Puzzle> puzzle;
+    // SFML GUI: Page initializations
+    Instruction instructionPage; // Custom GUI
+    Doors doorsPage; // Custom GUI
+    Quiz quizPage; // Custom GUI
+    History historyPage; // Custom GUI
+    std::unique_ptr<Puzzle> puzzle; // Custom GUI
 
     // Variables d'état
     bool isInMenu = true;
@@ -72,31 +64,32 @@ int main() {
 	bool step1 ;
 	bool lastgame = false ;
 //tic 
-	sf::Font font;
+ // SFML GUI: Font loading
+    sf::Font font; // SFML Font
     if (!font.loadFromFile("/usr/share/fonts/truetype/freefont/FreeSans.ttf")) {
         std::cout << "Erreur lors du chargement de la police." << std::endl;
         return -1;
     }
 
     GameLogic gameLogic;
-	Player joueur1(1, true);  // Joueur humain (X)
-    Player joueur2(2, false); // IA (O)
-    GameView gameView(font);
+    Player joueur1(1, true);
+    Player joueur2(2, false);
+    GameView gameView(font); // SFML GUI
     GameController gameController(gameLogic, joueur1, joueur2, gameView);
 
-    // Initialisation du personnage
-    Character player;
-    Arrow arrow("assets/images/arrow.png", 750.0f, sf::Vector2f(1280, 400));
+    // SFML GUI: Character and arrow setup
+    Character player; // Custom (uses SFML internally)
+    Arrow arrow("assets/images/arrow.png", 750.0f, sf::Vector2f(1280, 400)); // SFML Sprite
 
-    // Chargement des animations du personnage
-    player.loadTexturesFromFolder("assets/character/run", AnimationState::Run);
-    player.loadTexturesFromFolder("assets/character/idel", AnimationState::Idle);
-    player.loadTexturesFromFolder("assets/character/jump", AnimationState::Jump);
-    player.setScale(0.3f, 0.3f);
+    // SFML GUI: Character animations
+    player.loadTexturesFromFolder("assets/character/run", AnimationState::Run); // SFML Texture
+    player.loadTexturesFromFolder("assets/character/idel", AnimationState::Idle); // SFML Texture
+    player.loadTexturesFromFolder("assets/character/jump", AnimationState::Jump); // SFML Texture
+    player.setScale(0.3f, 0.3f); // SFML Transform
 
-    // Initialisation des plateformes
+    // SFML GUI: Platforms
     std::vector<Platform> platforms {
-        Platform({375, 15}, {0, 529}),
+        Platform({375, 15}, {0, 529}), // Custom (SFML-based)
         Platform({160, 15}, {915, 585}),
         Platform({160, 15}, {775, 665}),
         Platform({200, 15}, {1090, 520}),
@@ -273,15 +266,13 @@ int main() {
             }
         
 		
-        // Rendu
+        // SFML GUI: Rendering
         window.clear();
-	    if (lastgame) {
-			finalSound.play();	
-			 gameController.update(); 
-			         //  window.clear(sf::Color(0x2B0040FF)); // Couleur de fond
-					 gameController.updateView();
-        gameView.draw(window);
-            }
+        if (lastgame) {
+            finalSound.play(); // SFML Audio
+            gameController.update(); 
+            gameView.draw(window); // SFML Rendering
+        }
         
        else if (isInMenu) {
             window.draw(bg);
@@ -329,7 +320,7 @@ int main() {
             }
         }
 
-        window.display();
+       window.display(); // SFML Rendering
     }
 
     return 0;
